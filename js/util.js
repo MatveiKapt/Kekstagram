@@ -39,5 +39,5 @@ const isEscapeKey = (evt) => {
   return evt.key === 'Escape' || evt.key === 'Esc';
 };
 
-export {getRandomInteger, createRandomUniqueIntegersArray, checkStrokeLength, isEscapeKey};
+export {getRandomInteger, createRandomUniqueIntegersArray, checkStrokeLength, isEscapeKey}
 

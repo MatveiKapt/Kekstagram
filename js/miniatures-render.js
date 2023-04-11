@@ -29,4 +29,4 @@ const renderMiniatures = (miniaturesData) => {
   }
 };
 
-export {renderMiniatures};
+export {renderMiniatures}
