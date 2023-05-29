@@ -39,5 +39,34 @@ const isEscapeKey = (evt) => {
   return evt.key === 'Escape' || evt.key === 'Esc';
 };
 
-export {getRandomInteger, createRandomUniqueIntegersArray, checkStrokeLength, isEscapeKey}
+const closePopup = (popup, pageBody) => {
+  popup.classList.add('hidden');
+  pageBody.classList.remove('modal-open')
+  document.removeEventListener('keydown', onPopupEscKeydown);
+};
+
+const onPopupEscKeydown = (popup, pageBody) => {
+  return (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      closePopup(popup, pageBody);
+    }
+  }
+};
+
+const openPopup = (popup, closeButton, pageBody) => {
+  pageBody.classList.add('modal-open');
+
+  closeButton.addEventListener('click', () => {
+    closePopup(popup, pageBody);
+
+    closeButton.removeEventListener('click', closePopup);
+  });
+
+  document.addEventListener('keydown', onPopupEscKeydown(popup, pageBody));
+
+  popup.classList.remove('hidden');
+};
+
+export { getRandomInteger, createRandomUniqueIntegersArray, checkStrokeLength, isEscapeKey, openPopup }
 

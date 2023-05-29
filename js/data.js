@@ -1,4 +1,4 @@
-import {getRandomInteger, createRandomUniqueIntegersArray} from './util.js';
+import { getRandomInteger, createRandomUniqueIntegersArray } from './util.js';
 
 const DESCRIPTIONS_COUNT = 25;
 const DESCRIPTIONS = [
@@ -93,4 +93,4 @@ const createPhotoDescriptions = () => {
   return photosDescriptions;
 };
 
-export {createPhotoDescriptions};
+export { createPhotoDescriptions };

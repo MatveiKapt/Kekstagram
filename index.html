@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nouislider.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кекстаграм</title>
 </head>
@@ -30,23 +31,23 @@
       <section class="img-upload">
         <div class="img-upload__wrapper">
           <h2 class="img-upload__title  visually-hidden">Загрузка фотографии</h2>
-          <form class="img-upload__form" id="upload-select-image" method="post" enctype="multipart/form-data" autocomplete="off">
+          <form class="img-upload__form" id="upload-select-image" method="post" action="https://25.javascript.pages.academy/kekstagram" enctype="multipart/form-data" autocomplete="off">
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
-              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
+              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" accept="image/png, image/jpg, image/jpeg" required>
               <label for="upload-file" class="img-upload__label  img-upload__control">Загрузить</label>
             </fieldset>
 
             <!-- Форма редактирования изображения -->
-            <div class="img-upload__overlay  hidden">
+            <div class="img-upload__overlay hidden">
               <div class="img-upload__wrapper">
                 <div class="img-upload__preview-container">
 
                   <!-- Изменение размера изображения -->
                   <fieldset class="img-upload__scale  scale">
                     <button type="button" class="scale__control  scale__control--smaller">Уменьшить</button>
-                    <input type="text" class="scale__control  scale__control--value" value="55%" title="Image Scale" name="scale" readonly>
+                    <input type="text" class="scale__control  scale__control--value" value="100%" title="Image Scale" name="scale" readonly>
                     <button type="button" class="scale__control  scale__control--bigger">Увеличить</button>
                   </fieldset>
 
@@ -56,8 +57,8 @@
                   </div>
 
                   <!-- Изменение глубины эффекта, накладываемого на изображение -->
-                  <fieldset class="img-upload__effect-level  effect-level">
-                    <input class="effect-level__value" type="number" name="effect-level" value="">
+                  <fieldset class="img-upload__effect-level hidden effect-level">
+                    <input class="effect-level__value" type="number" name="effect-level">
                     <div class="effect-level__slider"></div>
                   </fieldset>
 
@@ -115,8 +116,12 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
-                  <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
-                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                  <div class="img-upload__element">
+                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
+                  </div>
+                  <div class="img-upload__element">
+                    <textarea class="text__description" name="description" maxLength="140" placeholder="Ваш комментарий..."></textarea>
+                  </div>
                 </fieldset>
 
                 <!-- Кнопка для отправки данных на сервер -->
@@ -173,18 +178,7 @@
   </main>
 
   <footer class="page-footer  container">
-    <div class="page-footer__wrapper">
-      <div class="page-footer__copyright  copyright">
-        <a class="copyright__link  copyright__link--image" href="https://htmlacademy.ru/intensive/javascript"><img src="img/htmla-logo.svg" width="130" height="45" alt="HTML Academy"></a>
-        <p>Сделано в <a class="copyright__link  copyright__link--text" href="https://htmlacademy.ru/intensive/javascript">HTML Academy</a></p>
-      </div>
-      <ul class="page-footer__contacts  contacts">
-        <li><a href="https://twitter.com/htmlacademy_ru" class="contacts__link  contacts__link--twitter">Twitter</a></li>
-        <li><a href="https://www.instagram.com/htmlacademy/" class="contacts__link  contacts__link--instagram">Instagtam</a></li>
-        <li><a href="https://www.facebook.com/htmlacademy" class="contacts__link  contacts__link--facebook">Facebook</a></li>
-        <li><a href="https://vk.com/htmlacademy" class="contacts__link  contacts__link--vk">VK</a></li>
-      </ul>
-    </div>
+    Каптюг
   </footer>
 
   <!-- Шаблон изображения случайного пользователя -->
@@ -231,6 +225,8 @@
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
 
+  <script src="js/pristine.min.js"></script>
+  <script src="js/nouislider.js"></script>
   <script src="js/main.js" type="module"></script>
 </body>
 </html>

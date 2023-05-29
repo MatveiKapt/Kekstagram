@@ -1,4 +1,4 @@
-/* import {isEscapeKey} from './util'; */
+import { openPopup } from './util.js';
 
 const pageBody = document.querySelector('body');
 const bigPicture = pageBody.querySelector('.big-picture');
@@ -33,8 +33,6 @@ const renderComments = (comments) => {
   commentsList.appendChild(commentsDocumentFragment);
 };
 
-
-
 const showBigPicture = (data) => {
 
   image.src = data.url;
@@ -44,21 +42,10 @@ const showBigPicture = (data) => {
 
   renderComments(data.comments);
 
-  pageBody.classList.add('.modal-open');
   socialCommentsCount.classList.add('hidden');
   commentsLoader.classList.add('hidden');
 
-  bigPictureCloseButton.addEventListener('click', () => {
-    bigPicture.classList.add('hidden');
-  });
-
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape' || evt.key === 'Esc') {
-      bigPicture.classList.add('hidden');
-    }
-  });
-
-  bigPicture.classList.remove('hidden');
+  openPopup(bigPicture, bigPictureCloseButton, pageBody);
 }
 
-export {showBigPicture}
+export { showBigPicture }
