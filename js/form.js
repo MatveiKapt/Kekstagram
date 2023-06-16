@@ -1,3 +1,7 @@
+import { sendData } from './api.js';
+import { closeRedactorPopup } from './photo-redactor-popup.js';
+import { showSuccessSendDataMessage, showErrorSendDataMessage } from './util.js';
+
 const form = document.querySelector('.img-upload__form');
 const hashtagField = document.querySelector('.text__hashtags');
 
@@ -43,9 +47,18 @@ pristine.addValidator(
   'Неправильно заполнены хэштеги',
 );
 
+const onFormSuccessSubmit = () => {
+  closeRedactorPopup();
+  showSuccessSendDataMessage();
+};
+
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  const body = new FormData(evt.target);
+
+  if (pristine.validate()) {
+    sendData(onFormSuccessSubmit, showErrorSendDataMessage, body);
+  }
 };
 
 form.addEventListener('submit', onFormSubmit);

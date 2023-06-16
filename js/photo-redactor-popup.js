@@ -41,4 +41,4 @@ const openRedactorPopup = () => {
   uploadFilePopup.classList.remove('hidden');
 };
 
-export { openRedactorPopup }
+export { openRedactorPopup, closeRedactorPopup }
