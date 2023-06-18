@@ -39,35 +39,6 @@ const isEscapeKey = (evt) => {
   return evt.key === 'Escape' || evt.key === 'Esc';
 };
 
-const closePopup = (popup, pageBody) => {
-  popup.classList.add('hidden');
-  pageBody.classList.remove('modal-open')
-  document.removeEventListener('keydown', onPopupEscKeydown);
-};
-
-const onPopupEscKeydown = (popup, pageBody) => {
-  return (evt) => {
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      closePopup(popup, pageBody);
-    }
-  }
-};
-
-const openPopup = (popup, closeButton, pageBody) => {
-  pageBody.classList.add('modal-open');
-
-  closeButton.addEventListener('click', () => {
-    closePopup(popup, pageBody);
-
-    closeButton.removeEventListener('click', closePopup);
-  });
-
-  document.addEventListener('keydown', onPopupEscKeydown(popup, pageBody));
-
-  popup.classList.remove('hidden');
-};
-
 const showGetErrorMessage = () => {
   const body = document.querySelector('body');
   const alert = document.createElement('div');
@@ -123,5 +94,5 @@ const showErrorSendDataMessage = () => {
   pageBody.appendChild(errorMessage);
 };
 
-export { getRandomInteger, createRandomUniqueIntegersArray, checkStrokeLength, isEscapeKey, openPopup, showGetErrorMessage, showSuccessSendDataMessage, showErrorSendDataMessage }
+export { getRandomInteger, createRandomUniqueIntegersArray, checkStrokeLength, isEscapeKey, showGetErrorMessage, showSuccessSendDataMessage, showErrorSendDataMessage }
 
