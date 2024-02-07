@@ -34,3 +34,5 @@ const renderMiniatures = (miniaturesData) => {
 };
 
 export { renderMiniatures }
+
+// test
